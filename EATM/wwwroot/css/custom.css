@@ -208,7 +208,8 @@ body {
     }
 
 .greytext {
-    color: #666255
+    color: #666255;
+    background: #E5E5E5;
 }
 
 .redishtext {
