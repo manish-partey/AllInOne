@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EATM.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,6 +24,8 @@ namespace EATM
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddDbContext<AppDbContext>(options =>
+			 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 			services.AddControllersWithViews();
 		}
 
@@ -42,6 +45,7 @@ namespace EATM
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 			app.UseRouting();
+			app.UseAuthentication();
 			app.UseAuthorization();
 			app.UseEndpoints(endpoints =>
 			{
