@@ -1,20 +1,21 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace EATM.Models
 {
-	public class AppDbContext :IdentityDbContext<IdentityUser>
+	public class AppDbContext : IdentityDbContext
 	{
-		public AppDbContext(DbContextOptions<AppDbContext> dbContextOptions) : base(dbContextOptions)
+		public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
 		{
 
 		}
+
+		public DbSet<FeedBack> FeedBacks { get; set; }
 
 	}
 }
